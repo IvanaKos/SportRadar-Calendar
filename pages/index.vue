@@ -3,12 +3,18 @@
   <div class="page">
     <NuxtLink to="/add-event">Add Event</NuxtLink>
     <h1>Hello</h1>
-    <VCalendar v-model="date" />
+    <VCalendar :attributes="events" />
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from "#imports";
-const date = ref(new Date());
+<script>
+import eventsData from "../store/index.js";
+export default {
+  data() {
+    return {
+      events: eventsData,
+    };
+  },
+};
 </script>
 <style>
 .vc-header {
