@@ -7,11 +7,11 @@
   </div>
 </template>
 <script>
-import eventsData from "../store/index.js";
+import calendarData from "../store/index.js";
 export default {
   data() {
     return {
-      events: eventsData,
+      events: calendarData,
     };
   },
 };
