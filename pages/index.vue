@@ -3,7 +3,7 @@
   <div class="page">
     <NuxtLink to="/add-event">Add Event</NuxtLink>
     <h1>Hello</h1>
-    <VCalendar :attributes="events" />
+    <VCalendar ref="calendar" :attributes="events" @dayclick="handleDayClick" />
   </div>
 </template>
 <script>
@@ -13,6 +13,19 @@ export default {
     return {
       events: calendarData,
     };
+  },
+  methods: {
+    handleDayClick(day) {
+      // Access the date property of the clicked day
+      const clickedDate = day.date;
+      console.log("Clicked date:", clickedDate);
+
+      // Redirect to the event-detail page with the clicked date as a query parameter
+      this.$router.push({
+        path: "/event-details",
+        query: { date: clickedDate },
+      });
+    },
   },
 };
 </script>
