@@ -1,3 +1,4 @@
+import { defineStore } from "pinia";
 import eventListData from "/src/event-list.json";
 
 const eventsList = eventListData.data;
@@ -15,5 +16,13 @@ const calendarData = eventsList.map((event) => ({
         ? event.awayTeam.officialName
         : "unknown"),
   },
+  customData: event,
 }));
-export default calendarData;
+
+export const useEventsStore = defineStore("events", {
+  state: () => ({
+    allEvents: eventsList,
+    attributes: calendarData,
+    details: [],
+  }),
+});
