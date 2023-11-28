@@ -3,7 +3,7 @@
   <div class="page">
     <NuxtLink to="/add-event">Add Event</NuxtLink>
     <h1>Hello</h1>
-    <VCalendar :attributes="store.attributes" />
+    <VCalendar :attributes="store.attributes" @dayclick="handleDayClick" />
   </div>
 </template>
 <script>
@@ -11,23 +11,33 @@ import { useEventsStore } from "../store/index.js";
 
 export default {
   setup() {
-    return {
-      store: useEventsStore(),
-    };
+    const store = useEventsStore();
+
+    return { store };
   },
+  methods: {
+    handleDayClick(day) {
+      const selectedDay = day;
 
-  // methods: {
-  //   handleDayClick(day) {
-  //     // Access the date property of the clicked day
-  //     const clickedDate = day;
-  //     console.log("Clicked date:", clickedDate);
+      this.clearDetailsPageData();
 
-  //     // Redirect to the event-detail page with the clicked date as a query parameter
-  //     this.$router.push({
-  //       path: "/event-details",
-  //     });
-  //   },
-  // },
+      selectedDay.attributes.map((attribute) => {
+        this.store.addSelectedDayEvent(attribute.customData);
+      });
+
+      this.openDetailsPage();
+    },
+
+    openDetailsPage() {
+      this.$router.push({
+        path: "/event-details",
+      });
+    },
+
+    clearDetailsPageData() {
+      this.store.clearSelectedDayEvents();
+    },
+  },
 };
 </script>
 <style>

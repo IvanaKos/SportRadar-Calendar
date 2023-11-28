@@ -1,13 +1,13 @@
 <template>
-  <p>Date: Clicked date: {{ clickedDate }}</p>
+  <p>{{ store.selectedDayEvents }}</p>
 </template>
 <script>
+import { useEventsStore } from "../store/index.js";
+
 export default {
-  computed: {
-    clickedDate() {
-      // Access the date parameter from the query
-      return this.$route.query.date;
-    },
+  setup() {
+    const store = useEventsStore();
+    return { store };
   },
 };
 </script>

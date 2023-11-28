@@ -23,6 +23,14 @@ export const useEventsStore = defineStore("events", {
   state: () => ({
     allEvents: eventsList,
     attributes: calendarData,
-    details: [],
+    selectedDayEvents: [],
   }),
+  actions: {
+    addSelectedDayEvent(event) {
+      this.selectedDayEvents.push(event);
+    },
+    clearSelectedDayEvents() {
+      this.selectedDayEvents = [];
+    },
+  },
 });
