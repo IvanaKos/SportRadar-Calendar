@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 import eventListData from "/src/event-list.json";
 
 const eventsList = eventListData.data;
-const calendarData = eventsList.map((event) => ({
-  key: event.dateVenue + " " + event.timeVenueUTC,
+const calendarData = eventsList.map((event, index) => ({
+  key: event.dateVenue + " " + event.timeVenueUTC + index,
   dot: event.status === "played" ? "red" : "blue",
   dates: event.dateVenue,
   popover: {
