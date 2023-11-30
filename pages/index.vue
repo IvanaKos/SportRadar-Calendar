@@ -4,7 +4,7 @@
     <div class="page">
       <NuxtLink to="/add-event">Add Event</NuxtLink>
       <h1>Hello</h1>
-      <VCalendar :attributes="store.attributes" @dayclick="handleDayClick" />
+      <VCalendar :attributes="attributes" @dayclick="handleDayClick" />
     </div>
   </ClientOnly>
 </template>
@@ -15,7 +15,12 @@ export default {
   setup() {
     const store = useEventsStore();
 
-    return { store };
+    const attributes = store.getCalendarData(store.allEvents);
+
+    return {
+      store,
+      attributes,
+    };
   },
   methods: {
     handleDayClick(day) {
