@@ -1,10 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="page">
-    <NuxtLink to="/add-event">Add Event</NuxtLink>
-    <h1>Hello</h1>
-    <VCalendar :attributes="store.attributes" @dayclick="handleDayClick" />
-  </div>
+  <ClientOnly>
+    <div class="page">
+      <NuxtLink to="/add-event">Add Event</NuxtLink>
+      <h1>Hello</h1>
+      <VCalendar :attributes="store.attributes" @dayclick="handleDayClick" />
+    </div>
+  </ClientOnly>
 </template>
 <script>
 import { useEventsStore } from "../store/index.js";
