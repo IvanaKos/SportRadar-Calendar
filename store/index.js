@@ -10,9 +10,11 @@ export const useEventsStore = defineStore("events", {
     addSelectedDayEvent(event) {
       this.selectedDayEvents.push(event);
     },
+
     clearSelectedDayEvents() {
       this.selectedDayEvents = [];
     },
+
     getCalendarData(events) {
       return events.map((event, index) => ({
         key: event.dateVenue + " " + event.timeVenueUTC + index,
@@ -30,6 +32,10 @@ export const useEventsStore = defineStore("events", {
         },
         customData: event,
       }));
+    },
+
+    addNewEvent(event) {
+      this.allEvents.push(event);
     },
   },
 });
