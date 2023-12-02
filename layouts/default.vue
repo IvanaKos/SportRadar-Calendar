@@ -1,15 +1,23 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div><NuxtPage /></div>
+  <section>
+    <MainHeader />
+    <NuxtPage />
+  </section>
 </template>
-<script></script>
+<script>
+import MainHeader from "~/components/MainHeader.vue";
+export default {
+  components: {
+    MainHeader,
+  },
+};
+</script>
 <style>
-.page {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+body {
+  margin: 0;
+}
+section {
+  width: 100%;
 }
 </style>

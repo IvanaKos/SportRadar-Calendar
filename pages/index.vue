@@ -1,8 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <ClientOnly>
-    <div class="page">
-      <NuxtLink to="/add-event">Add Event</NuxtLink>
+    <div class="container">
       <h1>Hello</h1>
       <VCalendar :attributes="attributes" @dayclick="handleDayClick" />
     </div>

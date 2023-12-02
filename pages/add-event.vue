@@ -1,6 +1,6 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <section>
-    <NuxtLink to="/">Home</NuxtLink>
     <h1>Add Event</h1>
     <div class="form-container">
       <form id="form" @submit.prevent="addEvent">
