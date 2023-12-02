@@ -23,4 +23,18 @@ body {
 section {
   width: 100%;
 }
+.vc-header {
+  padding: 30px;
+}
+
+.vc-title {
+  background: none;
+}
+
+.vc-title,
+.vc-weekday,
+.vc-day-content {
+  font-size: 1.4rem;
+  padding: 25px;
+}
 </style>

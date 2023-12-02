@@ -2,7 +2,7 @@
 <template>
   <ClientOnly>
     <div class="container">
-      <h1>Hello</h1>
+      <h1>My Event Calendar</h1>
       <VCalendar :attributes="attributes" @dayclick="handleDayClick" />
     </div>
   </ClientOnly>
@@ -46,24 +46,9 @@ export default {
   },
 };
 </script>
-<style>
-.vc-header {
-  padding: 30px;
-}
-.vc-title {
-  background: none;
-}
-.vc-title,
-.vc-weekday,
-.vc-day-content {
-  font-size: 24px;
-  padding: 30px;
-}
+<style scoped>
 h1 {
-  color: red;
-}
-.vc-container {
-  --day-content-height: 150px;
-  --day-content-width: 150px;
+  font-size: 2rem;
+  margin-bottom: 80px;
 }
 </style>
