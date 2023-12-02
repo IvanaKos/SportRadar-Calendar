@@ -26,7 +26,8 @@
             @input="updateAwayTeam"
           />
         </div>
-        <p>{{ homeTeam }}</p>
+
+        <VDatePicker mode="dateTime" is-required @dayclick="getDate" />
 
         <input type="submit" value="Submit" class="submit-btn" />
       </form>
@@ -46,12 +47,14 @@ export default {
     return {
       homeTeam: "",
       awayTeam: "",
+      dateVenue: null,
     };
   },
 
   methods: {
     addEvent() {
       this.store.addNewEvent({
+        dateVenue: this.dateVenue,
         homeTeam: this.homeTeam,
         awayTeam: this.awayTeam,
       });
@@ -64,6 +67,17 @@ export default {
     updateAwayTeam(event) {
       this.awayTeam = event.target.value;
     },
+    getDate({ date }) {
+      const selectedDate = date;
+      console.log(date);
+      console.log(selectedDate);
+      this.dateVenue = date;
+    },
   },
 };
 </script>
+<style>
+h1 {
+  font-size: 24px;
+}
+</style>

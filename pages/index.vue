@@ -49,7 +49,7 @@ export default {
 </script>
 <style>
 .vc-header {
-  padding: 50px;
+  padding: 30px;
 }
 .vc-title {
   background: none;
@@ -57,8 +57,8 @@ export default {
 .vc-title,
 .vc-weekday,
 .vc-day-content {
-  font-size: 30px;
-  padding: 40px;
+  font-size: 24px;
+  padding: 30px;
 }
 h1 {
   color: red;
