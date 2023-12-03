@@ -17,6 +17,7 @@ section {
   justify-content: space-between;
   align-items: center;
   background-color: #00003c;
+  margin-bottom: 50px;
 }
 .logo {
   padding: 10px;
