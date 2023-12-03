@@ -55,6 +55,26 @@
           @input="updateAwayTeam"
         />
       </div>
+      <div class="result-container" v-if="status === 'played'">
+        <input
+          type="number"
+          id="home-goals"
+          name="home-goals"
+          min="0"
+          max="100"
+          :value="homeGoals"
+          @input="updateHomeGoals"
+        />
+        <input
+          type="number"
+          id="away-goals"
+          name="away-goals"
+          min="0"
+          max="100"
+          :value="awayGoals"
+          @input="updateAwayGoals"
+        />
+      </div>
       <input type="submit" value="Submit" class="submit-btn" />
     </form>
   </section>
@@ -74,6 +94,8 @@ export default {
       awayTeam: "",
       dateVenue: null,
       status: "",
+      homeGoals: null,
+      awayGoals: null,
     };
   },
 
@@ -84,6 +106,7 @@ export default {
         homeTeam: { officialName: this.homeTeam },
         awayTeam: { officialName: this.awayTeam },
         status: this.status,
+        result: { homeGoals: this.homeGoals, awayGoals: this.awayGoals },
       };
 
       this.store.addNewEvent(event);
@@ -102,6 +125,12 @@ export default {
     updateEventStatus(event) {
       this.status = event.target.value;
     },
+    updateHomeGoals(event) {
+      this.homeGoals = event.target.value;
+    },
+    updateAwayGoals(event) {
+      this.awayGoals = event.target.value;
+    },
   },
 };
 </script>
@@ -116,14 +145,10 @@ form {
   align-items: center;
   gap: 30px;
 }
-
-.teams-container input {
-  width: 300px;
-  padding: 15px;
-  border: 2px solid #00003c;
-  border-radius: 5px;
+.event-status {
+  display: flex;
+  gap: 50px;
 }
-
 .date-picker {
   display: flex;
   flex-direction: column;
@@ -150,7 +175,21 @@ form {
   display: flex;
   gap: 50px;
 }
-.event-status {
+.teams-container input,
+.result-container input {
+  width: 300px;
+  border: 2px solid #00003c;
+  border-radius: 5px;
+}
+.teams-container input {
+  width: 300px;
+  padding: 15px;
+}
+.result-container input {
+  width: 50px;
+  padding: 10px;
+}
+.result-container {
   display: flex;
   gap: 50px;
 }
