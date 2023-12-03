@@ -25,14 +25,20 @@ section {
 }
 header {
   width: 100%;
-  padding: 10px 40px;
+  padding: 10px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.logo {
+  transition: 0.5s;
+}
+.logo:hover {
+  transform: scale(1.1);
+}
 nav {
   display: flex;
-  gap: 30px;
+  gap: 60px;
 }
 nav a {
   color: white;
