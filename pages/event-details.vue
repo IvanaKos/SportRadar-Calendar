@@ -5,7 +5,10 @@
         v-for="(selectedDayEvent, index) in store.selectedDayEvents"
         :key="selectedDayEvent.key"
       >
-        <p v-if="index === 0">{{ selectedDayEvent.dateVenue }}</p>
+        <div class="selected-date" v-if="index === 0">
+          <img src="~/assets/imgs/logo.png" alt="Logo" />
+          {{ selectedDayEvent.dateVenue }}
+        </div>
         <div class="accordion">
           <details>
             <summary>
@@ -13,17 +16,33 @@
                 selectedDayEvent.homeTeam &&
                 selectedDayEvent.homeTeam.officialName
                   ? selectedDayEvent.homeTeam.officialName
-                  : "unknown"
+                  : "----"
               }}
               vs
               {{
                 selectedDayEvent.awayTeam &&
                 selectedDayEvent.awayTeam.officialName
                   ? selectedDayEvent.awayTeam.officialName
-                  : "unknown"
+                  : "----"
               }}
             </summary>
+            <p>{{ selectedDayEvent.originCompetitionName }}</p>
+            <p>{{ selectedDayEvent.stage.name }}</p>
             <p>Status: {{ selectedDayEvent.status }}</p>
+            <p>
+              Result:
+              {{
+                selectedDayEvent.result
+                  ? selectedDayEvent.result.homeGoals
+                  : "-"
+              }}
+              :
+              {{
+                selectedDayEvent.result
+                  ? selectedDayEvent.result.awayGoals
+                  : "-"
+              }}
+            </p>
           </details>
         </div>
       </li>
@@ -43,11 +62,18 @@ export default {
 <style scoped>
 ul {
   list-style-type: none;
-  width: 80%;
+  width: 60%;
 }
-/* .accordion {
-  width: 100%;
-} */
+.selected-date {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.selected-date img {
+  width: 30px;
+}
 
 details {
   margin-bottom: 10px;
@@ -71,19 +97,19 @@ details[open] {
 
 @keyframes accordion-master {
   from {
-    max-height: var(--accordion-min-height);
+    max-height: 75px;
   }
   to {
-    max-height: var(--accordion-max-height);
+    max-height: 300px;
   }
 }
 
 @keyframes accordion-close {
   from {
-    min-height: var(--accordion-max-height);
+    min-height: 300px;
   }
   to {
-    min-height: var(--accordion-min-height);
+    min-height: 75px;
   }
 }
 
@@ -104,16 +130,15 @@ summary:after {
   content: "";
   flex-shrink: 0;
   color: var(--highlight_dark);
-  background: center url("~public/angle-down-solid.svg") no-repeat;
+  background: center url("~/assets/imgs/angle-down-solid.svg") no-repeat;
   width: 20px;
   height: 20px;
   transition: transform 0.4s ease;
 }
 
 details p {
-  padding: 30px;
-  margin-bottom: 0;
   opacity: 0;
+  margin-left: 30px;
 }
 
 details[open] summary ~ * {
