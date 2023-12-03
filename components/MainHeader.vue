@@ -1,13 +1,17 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <section>
-    <a class="logo" href="/">
-      <img src="~/assets/imgs/logo.png" alt="Logo" />
-    </a>
-    <nav>
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/add-event">Add Event</NuxtLink>
-    </nav>
+    <header>
+      <NuxtLink class="logo" to="/">
+        <img src="~/assets/imgs/logo.png" alt="Logo" />
+      </NuxtLink>
+      <nav>
+        <NuxtLink class="hover-underline-animation" to="/">Home</NuxtLink>
+        <NuxtLink class="hover-underline-animation" to="/add-event"
+          >Add Event</NuxtLink
+        >
+      </nav>
+    </header>
   </section>
 </template>
 <style scoped>
@@ -19,16 +23,19 @@ section {
   background-color: #00003c;
   margin-bottom: 50px;
 }
-.logo {
-  padding: 10px;
+header {
+  width: 100%;
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
 nav {
-  padding: 0 30px;
+  display: flex;
+  gap: 30px;
 }
 nav a {
   color: white;
-  padding-right: 30px;
   text-decoration: none;
 }
 </style>
