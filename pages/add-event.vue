@@ -56,11 +56,13 @@ export default {
 
   methods: {
     addEvent() {
-      this.store.addNewEvent({
+      const event = {
         dateVenue: this.dateVenue,
-        homeTeam: this.homeTeam,
-        awayTeam: this.awayTeam,
-      });
+        homeTeam: { officialName: this.homeTeam },
+        awayTeam: { officialName: this.awayTeam },
+      };
+
+      this.store.addNewEvent(event);
     },
 
     updateHomeTeam(event) {
