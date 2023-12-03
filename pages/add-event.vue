@@ -3,15 +3,39 @@
   <section class="container">
     <h1>Add New Event</h1>
     <form id="form" @submit.prevent="addEvent">
+      <div class="event-status">
+        <div>
+          <input
+            type="radio"
+            id="scheduled"
+            name="drone"
+            value="scheduled"
+            @change="updateEventStatus"
+            :checked="status === 'scheduled'"
+          />
+          <label for="scheduled">Scheduled</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="played"
+            name="drone"
+            value="played"
+            @change="updateEventStatus"
+            :checked="status === 'played'"
+          />
+          <label for="played">Played</label>
+        </div>
+      </div>
       <div class="date-picker">
         <p>{{ dateVenue }}</p>
-        <VDatePicker v-model="date" @dayclick="getDate">
+        <VDatePicker @dayclick="getDate">
           <template #default="{ togglePopover }">
             <button @click="togglePopover">Select date</button>
           </template>
         </VDatePicker>
       </div>
-      <div class="input-unit">
+      <div class="teams-container">
         <input
           id="home-team"
           placeholder="Home Team"
@@ -21,8 +45,6 @@
           :value="homeTeam"
           @input="updateHomeTeam"
         />
-      </div>
-      <div class="input-unit">
         <input
           id="away-team"
           placeholder="Away Team"
@@ -51,6 +73,7 @@ export default {
       homeTeam: "",
       awayTeam: "",
       dateVenue: null,
+      status: "",
     };
   },
 
@@ -60,6 +83,7 @@ export default {
         dateVenue: this.dateVenue,
         homeTeam: { officialName: this.homeTeam },
         awayTeam: { officialName: this.awayTeam },
+        status: this.status,
       };
 
       this.store.addNewEvent(event);
@@ -73,10 +97,10 @@ export default {
       this.awayTeam = event.target.value;
     },
     getDate({ date }) {
-      const selectedDate = date;
-      console.log(date);
-      console.log(selectedDate);
       this.dateVenue = date;
+    },
+    updateEventStatus(event) {
+      this.status = event.target.value;
     },
   },
 };
@@ -93,8 +117,8 @@ form {
   gap: 30px;
 }
 
-input {
-  width: 500px;
+.teams-container input {
+  width: 300px;
   padding: 15px;
   border: 2px solid #00003c;
   border-radius: 5px;
@@ -122,8 +146,17 @@ input {
   background-color: #00003c;
   color: white;
 }
+.teams-container {
+  display: flex;
+  gap: 50px;
+}
+.event-status {
+  display: flex;
+  gap: 50px;
+}
 .submit-btn {
-  width: 100px;
+  width: 120px;
+  padding: 15px;
   background-color: #00003c;
   color: white;
   border-radius: 5px;
