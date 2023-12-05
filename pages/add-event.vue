@@ -150,9 +150,14 @@ export default {
       this.dateVenue = date;
     },
 
-    formatDate() {
-      const options = { day: "numeric", month: "short", year: "numeric" };
-      return new Date(this.dateVenue).toLocaleDateString(undefined, options);
+    formatDate(date) {
+      const options = {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      };
+
+      return new Date(date).toLocaleDateString(undefined, options);
     },
 
     updateOriginCompetitionName(event) {

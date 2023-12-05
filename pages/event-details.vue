@@ -7,7 +7,7 @@
       >
         <div class="selected-date" v-if="index === 0">
           <img src="~/assets/imgs/logo.png" alt="Logo" />
-          {{ selectedDayEvent.dateVenue }}
+          {{ formatDate(selectedDayEvent.dateVenue) }}
         </div>
         <div class="accordion">
           <details>
@@ -56,6 +56,15 @@ export default {
   setup() {
     const store = useEventsStore();
     return { store };
+  },
+  methods: {
+    formatDate: function (date) {
+      return date.toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      });
+    },
   },
 };
 </script>
