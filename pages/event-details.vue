@@ -55,11 +55,12 @@ import { useEventsStore } from "../store/index.js";
 export default {
   setup() {
     const store = useEventsStore();
+
     return { store };
   },
   methods: {
     formatDate: function (date) {
-      return date.toLocaleDateString("en-US", {
+      return new Date(date).toLocaleDateString("en-US", {
         day: "numeric",
         month: "short",
         year: "numeric",

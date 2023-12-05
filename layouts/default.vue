@@ -46,21 +46,22 @@ export default {
     font-size: 1.1rem;
     padding: 20px;
   }
-  @media only screen and (max-width: 576px) {
-    .vc-header {
-      padding: 8px;
-    }
+}
 
-    .vc-title {
-      background: none;
-    }
+@media only screen and (max-width: 576px) {
+  .vc-header {
+    padding: 8px;
+  }
 
-    .vc-title,
-    .vc-weekday,
-    .vc-day-content {
-      font-size: 1.1rem;
-      padding: 12px;
-    }
+  .vc-title {
+    background: none;
+  }
+
+  .vc-title,
+  .vc-weekday,
+  .vc-day-content {
+    font-size: 1.1rem;
+    padding: 12px;
   }
 }
 </style>
