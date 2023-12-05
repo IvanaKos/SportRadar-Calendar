@@ -27,18 +27,17 @@
               }}
             </summary>
             <p>{{ selectedDayEvent.originCompetitionName }}</p>
-            <p>{{ selectedDayEvent.stage.name }}</p>
             <p>Status: {{ selectedDayEvent.status }}</p>
             <p>
               Result:
               {{
-                selectedDayEvent.result
+                selectedDayEvent.result && selectedDayEvent.result.homeGoals
                   ? selectedDayEvent.result.homeGoals
                   : "-"
               }}
               :
               {{
-                selectedDayEvent.result
+                selectedDayEvent.result && selectedDayEvent.result.awayGoals
                   ? selectedDayEvent.result.awayGoals
                   : "-"
               }}
@@ -49,6 +48,7 @@
     </ul>
   </div>
 </template>
+
 <script>
 import { useEventsStore } from "../store/index.js";
 
@@ -59,11 +59,13 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 ul {
   list-style-type: none;
   width: 60%;
 }
+
 .selected-date {
   display: flex;
   align-items: center;
@@ -71,14 +73,15 @@ ul {
   gap: 20px;
   margin-bottom: 40px;
 }
+
 .selected-date img {
   width: 30px;
 }
 
 details {
   margin-bottom: 10px;
-  border: 1px solid #00003c;
-  color: #00003c;
+  border: 1px solid var(--dark);
+  color: var(--dark);
   border-radius: 5px;
   cursor: pointer;
   box-sizing: border-box;
@@ -114,9 +117,9 @@ details[open] {
 }
 
 summary {
-  border: 1px solid #00003c;
-  background-color: #00003c;
-  color: white;
+  border: 1px solid var(--dark);
+  background-color: var(--dark);
+  color: var(--light);
   list-style: none;
   display: flex;
   gap: 50px;
@@ -129,7 +132,6 @@ summary {
 summary:after {
   content: "";
   flex-shrink: 0;
-  color: var(--highlight_dark);
   background: center url("~/assets/imgs/angle-down-solid.svg") no-repeat;
   width: 20px;
   height: 20px;
