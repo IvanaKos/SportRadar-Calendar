@@ -299,4 +299,11 @@ form {
 .event-details-container p {
   font-weight: bold;
 }
+
+@media only screen and (max-width: 768px) {
+  .teams-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
 </style>
