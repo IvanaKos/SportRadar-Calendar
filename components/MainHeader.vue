@@ -73,4 +73,14 @@ nav a {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+@media only screen and (max-width: 576px) {
+  header {
+    padding: 10px 20px;
+  }
+
+  nav {
+    gap: 30px;
+  }
+}
 </style>
