@@ -20,5 +20,5 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["vue"],
-  rules: {},
+  rules: { "vue/multi-word-component-names": 0 },
 };
