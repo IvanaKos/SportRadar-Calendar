@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <ClientOnly>
     <div class="container">
@@ -7,6 +6,7 @@
     </div>
   </ClientOnly>
 </template>
+
 <script>
 import { useEventsStore } from "../store/index.js";
 
